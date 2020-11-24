@@ -1196,6 +1196,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1211,6 +1212,21 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b120c68a4688141bc6455b7a643f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 1271375855}
+  Smoothvalue: 2
+  PosY: 17
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1382,6 +1398,11 @@ CapsuleCollider2D:
   m_Offset: {x: -2.9, y: 13.76}
   m_Size: {x: 5.03, y: 23.07}
   m_Direction: 0
+--- !u!95 &1271375859 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1843023707, guid: c0f2eb5a0f33d304bb9645f63619d20d, type: 3}
+  m_PrefabInstance: {fileID: 384451161}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1271375860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8872375841186327156, guid: c0f2eb5a0f33d304bb9645f63619d20d, type: 3}
@@ -1399,37 +1420,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9063a4aa16ec97e44a30b19ae4548918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 1271375862}
-  runSpeed: 200
-  rollingDuration: 0
---- !u!114 &1271375862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1271375855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e30445a454ac4b04a81920973a688a37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_JumpForce: 5000
-  m_CrouchSpeed: 1
-  m_MovementSmoothing: 0
-  m_AirControl: 1
-  m_WhatIsGround:
+  JumpForce: 5000
+  SlideSpeed: 1
+  MovementSmoothing: 0
+  AirControl: 1
+  WhatIsGround:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_GroundCheck: {fileID: 617184036}
-  m_CeilingCheck: {fileID: 1672306005}
-  m_CrouchDisableCollider: {fileID: 0}
-  OnLandEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCrouchEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  GroundCheck: {fileID: 617184036}
+  CeilingCheck: {fileID: 1672306005}
+  DefaultCollider: {fileID: 1271375857}
+  SlideCollider: {fileID: 0}
+  runSpeed: 200
+  animator: {fileID: 1271375859}
+  slidingDuration: 0.01
 --- !u!1 &1294783832
 GameObject:
   m_ObjectHideFlags: 0
@@ -3566,7 +3570,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672306004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.3, y: 25.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1271375860}

@@ -1,62 +1,56 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : CharacterController2D
 {
-    public CharacterController2D controller;
     public float runSpeed = 40f;
-    public float rollingDuration = 0.01f;
+    public Animator animator;
+    public float slidingDuration = 0.01f;
 
     private float horizontalMove = 0f;
     private bool jump = false;
-    private bool rolling = false;
-    private Animator animator;
-    private float timeRollingCountdown = 0f;
+    private bool sliding = false;
+    private float timeSlidingCountdown = 0f;
 
-    private void Start()
+    public void Update()
     {
-        animator = GetComponent<Animator>();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        if (!rolling)
+        if (!sliding)
         {
             horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         }
         else
         {
-            horizontalMove = controller.IsFacingRight() ? runSpeed : -runSpeed;
+            horizontalMove = FacingRight ? runSpeed : -runSpeed;
         }
 
-        if (Input.GetButtonDown("Jump") && !rolling)
+        if (Input.GetButtonDown("Jump") && !sliding)
         {
             jump = true;
         }
 
-        if (Input.GetButtonDown("Roll") && !rolling)
+        if (Input.GetButtonDown("Roll") && !sliding)
         {
-            rolling = true;
+            sliding = true;
             animator.SetBool("IsRolling", true);
-            timeRollingCountdown = rollingDuration;
+            timeSlidingCountdown = slidingDuration;
         }
-        else if (rolling && timeRollingCountdown < 0)
+        else if (sliding && timeSlidingCountdown < 0)
         {
-            rolling = false;
+            sliding = false;
             animator.SetBool("IsRolling", false);
         }
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
-        animator.SetBool("IsJumping", !controller.IsGrounded());
-        if (rolling)
+        animator.SetBool("IsJumping", !Grounded);
+        if (sliding)
         {
-            timeRollingCountdown -= Time.deltaTime;
+            timeSlidingCountdown -= Time.deltaTime;
         }
     }
 
-    void FixedUpdate()
+    public void FixedUpdate()
     {
-        // Move our character
-        controller.Move(horizontalMove * Time.fixedDeltaTime, rolling, jump);
+        base.FixedUpdate();
+        //Move(horizontalMove * Time.fixedDeltaTime, sliding, jump);
+        Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
     }
 
