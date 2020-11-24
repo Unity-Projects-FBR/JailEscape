@@ -3,7 +3,7 @@ using UnityEngine;
 public class CharacterController2D : MonoBehaviour
 {
 	[SerializeField] private float JumpForce = 400f;
-	[Range(1, 2)] [SerializeField] private float SlideSpeed = 1.36f;
+    [Range(1, 2)] [SerializeField] private float SlideSpeed = 1.36f;
 	[Range(0, .3f)] [SerializeField] private float MovementSmoothing = .05f;
 	[SerializeField] private bool AirControl = false;
 	[SerializeField] private LayerMask WhatIsGround;
@@ -15,8 +15,8 @@ public class CharacterController2D : MonoBehaviour
 	protected bool FacingRight = true;
     protected bool Grounded;
 
-    private const float GroundedRadius = .2f;
-    private const float CeilingRadius = .2f;
+    private const float GroundedRadius = 1f;
+    private const float CeilingRadius = 1f;
 	private Rigidbody2D Rigidbody2DComponent;
 	private Vector3 Velocity = Vector3.zero;
 
@@ -41,10 +41,10 @@ public class CharacterController2D : MonoBehaviour
 
 	public void Move(float xMovement, bool slide, bool jump)
 	{
-        //if (!slide && Physics2D.OverlapCircle(CeilingCheck.position, CeilingRadius, WhatIsGround))
-        //{
-        //    slide = true;
-        //}
+        if (!slide && Physics2D.OverlapCircle(CeilingCheck.position, CeilingRadius, WhatIsGround))
+        {
+            slide = true;
+        }
 
         if (Grounded || AirControl)
         {

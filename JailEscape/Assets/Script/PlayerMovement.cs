@@ -27,16 +27,16 @@ public class PlayerMovement : CharacterController2D
             jump = true;
         }
 
-        if (Input.GetButtonDown("Roll") && !sliding)
+        if (Input.GetButtonDown("Slide") && !sliding)
         {
             sliding = true;
-            animator.SetBool("IsRolling", true);
+            animator.SetBool("IsSliding", true);
             timeSlidingCountdown = slidingDuration;
         }
         else if (sliding && timeSlidingCountdown < 0)
         {
             sliding = false;
-            animator.SetBool("IsRolling", false);
+            animator.SetBool("IsSliding", false);
         }
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         animator.SetBool("IsJumping", !Grounded);
@@ -49,8 +49,7 @@ public class PlayerMovement : CharacterController2D
     public void FixedUpdate()
     {
         base.FixedUpdate();
-        //Move(horizontalMove * Time.fixedDeltaTime, sliding, jump);
-        Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+        Move(horizontalMove * Time.fixedDeltaTime, sliding, jump);
         jump = false;
     }
 
