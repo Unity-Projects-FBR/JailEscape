@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Script;
+using UnityEngine;
 
 public class PlayerMovement : CharacterController2D
 {
@@ -30,16 +31,16 @@ public class PlayerMovement : CharacterController2D
         if (Input.GetButtonDown("Slide") && !sliding)
         {
             sliding = true;
-            animator.SetBool("IsSliding", true);
+            animator.SetBool(CharacterAnimatorVariableNames.IsSliding, true);
             timeSlidingCountdown = slidingDuration;
         }
         else if (sliding && timeSlidingCountdown < 0)
         {
             sliding = false;
-            animator.SetBool("IsSliding", false);
+            animator.SetBool(CharacterAnimatorVariableNames.IsSliding, false);
         }
-        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
-        animator.SetBool("IsJumping", !Grounded);
+        animator.SetFloat(CharacterAnimatorVariableNames.Speed, Mathf.Abs(horizontalMove));
+        animator.SetBool(CharacterAnimatorVariableNames.IsJumping, !Grounded);
         if (sliding)
         {
             timeSlidingCountdown -= Time.deltaTime;
