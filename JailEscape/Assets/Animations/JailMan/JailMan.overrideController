@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: JailMan
+  m_Controller: {fileID: 9100000, guid: a27cfe3e5cc0d474fa5a335d73a74644, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 0378e45b13b7fcb4fbec67fa22bf3911, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0378e45b13b7fcb4fbec67fa22bf3911, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 304a579a189b80b4b994caba96332d0a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 304a579a189b80b4b994caba96332d0a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1b48d3e530771e94e942e83070fc9593, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1b48d3e530771e94e942e83070fc9593, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: caab4c05dbc8c1142897bb2f870ff9a0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: caab4c05dbc8c1142897bb2f870ff9a0, type: 2}
