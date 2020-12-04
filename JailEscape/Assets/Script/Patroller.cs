@@ -24,7 +24,7 @@ public class Patroller : MonoBehaviour
         isWaiting = false;
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         if (!isWaiting)
         {
