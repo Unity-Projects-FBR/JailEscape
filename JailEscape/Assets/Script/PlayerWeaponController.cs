@@ -1,16 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
-public class PlayerWeaponController : MonoBehaviour
+public class PlayerWeaponController : WeaponController
 {
-    public Camera cam;
-    public GameObject Solver;
-    public float TimeBtwShoots = 0.2f;
-    public Bullet BulletPrefab;
-    public Transform ShootingPosition;
-
     private Vector2 MousePos;
-    private float TimeFromLastShoot = 0f;
 
     public void Update()
     {
@@ -19,19 +12,12 @@ public class PlayerWeaponController : MonoBehaviour
 
     public void FixedUpdate()
     {
-        Solver.transform.position = MousePos;
-
+        ArmSolver.transform.position = MousePos;
         TimeFromLastShoot += Time.deltaTime;
         if (Input.GetButtonDown("Fire1") && TimeFromLastShoot > TimeBtwShoots)
         {
             TimeFromLastShoot = 0;
             Shoot();
         }
-
-    }
-
-    private void Shoot()
-    {
-        Instantiate(BulletPrefab, ShootingPosition.position, transform.rotation);
     }
 }
