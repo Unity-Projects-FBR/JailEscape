@@ -40,7 +40,7 @@ public class PlayerMovement : CharacterController2D
             animator.SetBool(CharacterAnimatorVariableNames.IsSliding, false);
         }
         animator.SetFloat(CharacterAnimatorVariableNames.Speed, Mathf.Abs(horizontalMove));
-        animator.SetBool(CharacterAnimatorVariableNames.IsJumping, !Grounded);
+        animator.SetBool(CharacterAnimatorVariableNames.IsJumping, jump);
         if (sliding)
         {
             timeSlidingCountdown -= Time.deltaTime;
