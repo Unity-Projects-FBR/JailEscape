@@ -6,6 +6,7 @@ public class PlayerMovement : CharacterController2D
     public float runSpeed = 40f;
     public Animator animator;
     public float slidingDuration = 0.01f;
+    public BulletTime bulletTimeEffect;
 
     private float horizontalMove = 0f;
     private bool jump = false;
@@ -45,12 +46,17 @@ public class PlayerMovement : CharacterController2D
         {
             timeSlidingCountdown -= Time.deltaTime;
         }
+
+        if (sliding || !Grounded)
+            bulletTimeEffect.SlowMotion();
+        else
+            bulletTimeEffect.NormalMotion();
     }
 
     public void FixedUpdate()
     {
         base.FixedUpdate();
-        Move(horizontalMove * Time.fixedDeltaTime, sliding, jump);
+        Move(horizontalMove * Time.fixedUnscaledDeltaTime, sliding, jump);
         jump = false;
     }
 
