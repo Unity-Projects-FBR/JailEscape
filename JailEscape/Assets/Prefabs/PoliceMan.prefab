@@ -471,33 +471,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2516569653085009912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3058804016231748881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 097b551f2844b054290f18a39bf892e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Solvers:
-  - {fileID: 1226576821118529843}
-  - {fileID: 5767695048839486308}
-  - {fileID: 5462141870647935251}
-  - {fileID: 7604468296403891377}
-  m_Weight: 1
-  m_SolverEditorData:
-  - color: {r: 0, g: 0.12438488, b: 1, a: 1}
-    showGizmo: 1
-  - color: {r: 1, g: 0.07119019, b: 0, a: 1}
-    showGizmo: 1
-  - color: {r: 0.017419815, g: 0, b: 0.28235295, a: 1}
-    showGizmo: 1
-  - color: {r: 0.33333334, g: 0.10395101, b: 0, a: 1}
-    showGizmo: 1
 --- !u!114 &1060410907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -529,7 +502,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04148cd8fe9c1804f8a2c5e3ca80df48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 20
+--- !u!114 &2516569653085009912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3058804016231748881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 097b551f2844b054290f18a39bf892e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Solvers:
+  - {fileID: 1226576821118529843}
+  - {fileID: 5767695048839486308}
+  - {fileID: 5462141870647935251}
+  - {fileID: 7604468296403891377}
+  m_Weight: 1
+  m_SolverEditorData:
+  - color: {r: 0, g: 0.12438488, b: 1, a: 1}
+    showGizmo: 1
+  - color: {r: 1, g: 0.07119019, b: 0, a: 1}
+    showGizmo: 1
+  - color: {r: 0.017419815, g: 0, b: 0.28235295, a: 1}
+    showGizmo: 1
+  - color: {r: 0.33333334, g: 0.10395101, b: 0, a: 1}
+    showGizmo: 1
 --- !u!1 &4145192409127765475
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,8 +11,9 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private Transform CeilingCheck;
 	[SerializeField] private Collider2D DefaultCollider;
 	[SerializeField] private Collider2D SlideCollider;
+	[SerializeField] private Collider2D JumpCollider;
 
-	protected bool FacingRight = true;
+    protected bool FacingRight = true;
     protected bool Grounded;
 
     private const float GroundedRadius = 1f;
@@ -48,7 +49,7 @@ public class CharacterController2D : MonoBehaviour
 
         if (Grounded || AirControl)
         {
-            XMovementControl(xMovement, slide);
+            XMovementControl(xMovement, slide, jump);
         }
 
         if (Grounded && jump)
@@ -58,18 +59,14 @@ public class CharacterController2D : MonoBehaviour
 		}
 	}
 
-    private void XMovementControl(float xMovement, bool slide)
+    private void XMovementControl(float xMovement, bool slide, bool jump)
     {
         if (slide)
         {
-            SwitchColliders(false);
             xMovement *= SlideSpeed;
         }
-        else
-        {
-            SwitchColliders(true);
-        }
 
+        SetActiveCollider(slide, jump);
         CheckPlayerFlip(xMovement);
 
         Vector3 targetVelocity = new Vector2(xMovement * 10f, Rigidbody2DComponent.velocity.y);
@@ -88,12 +85,14 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
-    private void SwitchColliders(bool enableDefault)
+    private void SetActiveCollider(bool slide, bool jump)
     {
+        if(SlideCollider != null)
+            SlideCollider.enabled = slide;
+        if (JumpCollider != null)
+            JumpCollider.enabled = jump || !Grounded;
         if (DefaultCollider != null)
-            DefaultCollider.enabled = enableDefault;
-        if (SlideCollider != null)
-            SlideCollider.enabled = !enableDefault;
+            DefaultCollider.enabled = !slide && !jump && Grounded;
     }
 
     private void Flip()
