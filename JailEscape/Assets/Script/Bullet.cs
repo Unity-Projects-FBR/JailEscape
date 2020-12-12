@@ -4,6 +4,7 @@ public class Bullet : MonoBehaviour
 {
     public float bulletSpeed = 800f;
     public int damage = 10;
+    public string enemyTag = null;
 
     // Start is called before the first frame update
     public void Start()
@@ -14,7 +15,8 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (hitInfo.TryGetComponent<Health>(out Health healthObject))
+        var isEnemy = string.IsNullOrEmpty(enemyTag)|| hitInfo.gameObject.CompareTag(enemyTag);
+        if (hitInfo.TryGetComponent<Health>(out Health healthObject) && isEnemy)
         {
             healthObject.TakeDamage(damage);
         }

@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerWeaponController : WeaponController
 {
     private Vector2 MousePos;
+    public Camera cam;
 
     public void Update()
     {

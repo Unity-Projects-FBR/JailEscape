@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    public Camera cam;
     public Transform ShootingPosition;
     public Bullet BulletPrefab;
     public GameObject ArmSolver;

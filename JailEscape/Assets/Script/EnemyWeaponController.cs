@@ -2,16 +2,29 @@
 
 public class EnemyWeaponController : WeaponController
 {
-    public Transform Target;
+    public string TargetName = "JailMan";
+    public float maxDistanceToShootSqr = 20000f;
     public Vector3 targetOffset;
+
+    private Transform Target;
+
+    public void Awake()
+    {
+        if (Target == null)
+            Target = GameObject.Find(TargetName).transform;
+    }
     public void FixedUpdate()
     {
-        ArmSolver.transform.position = Target.position + targetOffset;
-        TimeFromLastShoot += Time.deltaTime;
-        if (TimeFromLastShoot > TimeBtwShoots)
+        var distToTarget = Mathf.Abs(transform.position.sqrMagnitude - Target.position.sqrMagnitude);
+        if (distToTarget <= maxDistanceToShootSqr)
         {
-            TimeFromLastShoot = 0;
-            Shoot();
+            ArmSolver.transform.position = Target.position + targetOffset;
+            TimeFromLastShoot += Time.deltaTime;
+            if (TimeFromLastShoot > TimeBtwShoots)
+            {
+                TimeFromLastShoot = 0;
+                Shoot();
+            }
         }
     }
 }
