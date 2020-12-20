@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: enemyTag
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6131495487187024725, guid: 592ef4f3b26425c4aa4fdbd47041f803, type: 3}
+      propertyPath: bulletSpeed
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 6813896562713182535, guid: 592ef4f3b26425c4aa4fdbd47041f803, type: 3}
       propertyPath: m_Name
       value: policeBullet
